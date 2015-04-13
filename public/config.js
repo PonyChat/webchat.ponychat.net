@@ -21,7 +21,7 @@ params.language                     = "en";
  * The use of styles only works when you upload lightIRC to your webspace.
  * Example: css/lightblue.css 
  */
-params.styleURL                     = "css/lightblue.css";
+params.styleURL                     = "css/chat.css";
 
 params.realname = "webchat.ponychat.net";
 params.defaultBanmask = "*!*@%host%";
