@@ -39,12 +39,12 @@ params.nick                         = "pony_%";
 /* Channel to be joined after connecting. Multiple channels can be added like this: #lightIRC,#test,#help */
 params.autojoin                     = "#ponychat";
 
-function() {
+(function() {
 	var list = getParameterByName("autojoin")
 	if list != "" {
 		params.autojoin = list
 	}
-}()
+})()
 
 /* Commands to be executed after connecting. E.g.: /mode %nick% +x */
 params.perform                      = "";
