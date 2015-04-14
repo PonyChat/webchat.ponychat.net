@@ -40,8 +40,8 @@ params.nick                         = "pony_%";
 params.autojoin                     = "#ponychat";
 
 (function() {
-	var list = getParameterByName("autojoin")
-	if list != "" {
+	var list = getParameterByName("autojoin");
+	if(list != "") {
 		params.autojoin = list
 	}
 })()
