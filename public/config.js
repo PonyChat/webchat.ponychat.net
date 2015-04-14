@@ -7,6 +7,13 @@
  *
  */
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 var params = {};
 
 /* Change these parameters */
@@ -19,7 +26,7 @@ params.language                     = "en";
 
 /* Relative or absolute URL to a lightIRC CSS file.
  * The use of styles only works when you upload lightIRC to your webspace.
- * Example: css/lightblue.css 
+ * Example: css/lightblue.css
  */
 params.styleURL                     = "css/chat.css";
 
@@ -31,6 +38,14 @@ params.showJoinPartMessages = false;
 params.nick                         = "pony_%";
 /* Channel to be joined after connecting. Multiple channels can be added like this: #lightIRC,#test,#help */
 params.autojoin                     = "#ponychat";
+
+function() {
+	var list = getParameterByName("autojoin")
+	if list != "" {
+		params.autojoin = list
+	}
+}()
+
 /* Commands to be executed after connecting. E.g.: /mode %nick% +x */
 params.perform                      = "";
 
