@@ -68,12 +68,12 @@ params.showNewQueriesInBackground   = false;
 /* Position of the navigation container (where channel and query buttons appear). Valid values: left, right, top, bottom */
 params.navigationPosition           = "top";
 
-params.registerChannelCommand = "/msg ChanServ register %channel%"
+params.registerChannelCommand = "/msg ChanServ register %channel%";
 
 /* See more parameters at http://redmine.lightirc.com/projects/lightirc/wiki/Customization_parameters */
 
-
-
+params.emoticonPath = "ponyemotes/";
+params.emoticonList = ":)->twilightsmile.gif,;)->raritywink.gif,:D->rainbowlaugh.gif,:P->derpytongue2.gif,:(->fluttershysad.gif,:$->twilightblush.gif,:O->pinkiegasp.gif,:|->trixieshiftleft.gif,:'(->fluttercry.gif,:S->unsuresweetie.gif,:[->flutterrage.gif,<3->heart.gif,6_9->derpyderp1.gif,>_>->aj-lie-1.gif,<_<->aj-lie-2.gif";
 
 /* Use this method to send a command to lightIRC with JavaScript */
 function sendCommand(command) {
