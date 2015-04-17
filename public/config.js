@@ -75,6 +75,8 @@ params.registerChannelCommand = "/msg ChanServ register %channel%";
 params.emoticonPath = "ponyemotes/";
 params.emoticonList = ":)->twilightsmile.gif,;)->raritywink.gif,:D->rainbowlaugh.gif,:P->derpytongue2.gif,:(->fluttershysad.gif,:$->twilightblush.gif,:O->pinkiegasp.gif,:|->trixieshiftleft.gif,:'(->fluttercry.gif,:S->unsuresweetie.gif,:[->flutterrage.gif,<3->heart.gif,6_9->derpyderp1.gif,>_>->aj-lie-1.gif,<_<->aj-lie-2.gif";
 
+params.userListCustomFormatting = "mode=o:userListOperator,mode=v:userListVoice,mode=y:userListOwner,mode=a:userListAdmin,mode=h:userListHalfop";
+
 /* Use this method to send a command to lightIRC with JavaScript */
 function sendCommand(command) {
   swfobject.getObjectById('lightIRC').sendCommand(command);
