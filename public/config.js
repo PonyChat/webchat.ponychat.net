@@ -18,8 +18,9 @@ var params = {};
 
 /* Change these parameters */
 params.host                         = "irc.ponychat.net";
-params.port                         = 6667;
+params.port                         = 6697;
 params.policyPort                   = 8430;
+params.ssl                          = true;
 
 /* Language for the user interface. Currently available translations: ar, bd, bg, br, cz, da, de, el, en, es, et, fi, fr, hu, hr, id, it, ja, lv, nl, no, pl, pt, ro, ru, sk, sl, sq, sr_cyr, sr_lat, sv, th, tr, uk */
 params.language                     = "en";
