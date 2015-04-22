@@ -47,7 +47,7 @@ conf = qwebirc.config.load({
     },
     "websocket": {
         // URL: URL of IRC server to connect to.
-        "url": "ws://irc.ponychat.net:6767/"
+        "url": "wss://irc.ponychat.net:6767/"
     }
 });
 
