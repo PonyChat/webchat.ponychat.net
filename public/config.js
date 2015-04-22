@@ -1,11 +1,55 @@
-/*
- * lightIRC configuration
- * www.lightIRC.com
- *
- * You can add or change these parameters to customize lightIRC.
- * Please see the full parameters list at http://redmine.lightirc.com/projects/lightirc/wiki/Customization_parameters
- *
- */
+conf = qwebirc.config.load({
+    "ui": {
+        "fg_color": "DDDDDD",
+        "fg_sec_color": "999999",
+        "privacy": false,
+        "nick_status": true,
+        "flash_on_mention": false,
+        "dedicated_msg_window": false,
+        "bg_color": "000000",
+        "dedicated_notice_window": false,
+        "lastpos_line": true,
+        "hide_joinparts": true,
+        "simple_color": false,
+        "beep_on_mention": false,
+        "nick_click_query": false,
+        "nick_colors": true
+    },
+    "atheme": {
+        "sasl_type": "PLAIN",
+        "nickserv_login": true,
+        "chan_list_on_start": false,
+        "chan_list": false,
+        "chan_list_cloud_view": false
+    },
+    "frontend": {
+        "chan_prompt": true,
+        "initial_chans": "#ponychat",
+        "prompt": true,
+        "chan_autoconnect": true,
+        "base_url": "",
+        "dynamic_base_url": "",
+        "app_title": "PonyChat Webchat",
+        "initial_nick": "pony_....",
+        "static_base_url": "",
+        "network_name": "PonyChat",
+        "connections": ["websocket", "flash"]
+    },
+    "flash": {
+        // SERVER: Hostname (or IP address) of IRC server to connect to.
+        "server": "irc.ipv4.ponychat.net",
+
+        // PORT: Port of IRC server to connect to.
+        "port": 6667,
+
+        // XMLPORT: Port of IRC servers flash policy daemon
+        "xmlport": 8430,
+    },
+    "websocket": {
+        // URL: URL of IRC server to connect to.
+        "url": "ws://irc.ponychat.net:6767/"
+    }
+});
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -14,111 +58,11 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-var params = {};
+conf.frontend.initial_chans = (function() {
+        var list = getParameterByName("autojoin");
+        if(list != "") {
+                return list;
+        }
 
-/* Change these parameters */
-params.host                         = "irc.ponychat.net";
-params.port                         = 6697;
-params.policyPort                   = 8430;
-params.ssl                          = true;
-
-/* Language for the user interface. Currently available translations: ar, bd, bg, br, cz, da, de, el, en, es, et, fi, fr, hu, hr, id, it, ja, lv, nl, no, pl, pt, ro, ru, sk, sl, sq, sr_cyr, sr_lat, sv, th, tr, uk */
-params.language                     = "en";
-
-/* Relative or absolute URL to a lightIRC CSS file.
- * The use of styles only works when you upload lightIRC to your webspace.
- * Example: css/lightblue.css
- */
-params.styleURL                     = "css/chat.css";
-
-params.realname = "webchat.ponychat.net";
-params.defaultBanmask = "*!*@%host%";
-params.showJoinPartMessages = false;
-
-/* Nick to be used. A % character will be replaced by a random number */
-params.nick                         = "pony_%";
-/* Channel to be joined after connecting. Multiple channels can be added like this: #lightIRC,#test,#help */
-params.autojoin                     = "#ponychat";
-
-(function() {
-	var list = getParameterByName("autojoin");
-	if(list != "") {
-		params.autojoin = list
-	}
+        return "#ponychat";
 })()
-
-/* Commands to be executed after connecting. E.g.: /mode %nick% +x */
-params.perform                      = "";
-
-/* Whether the server window (and button) should be shown */
-params.showServerWindow             = true;
-
-/* Show a popup to enter a nickname */
-params.showNickSelection            = true;
-/* Adds a password field to the nick selection box */
-params.showIdentifySelection        = true;
-
-/* Show button to register a nickname */
-params.showRegisterNicknameButton   = true;
-/* Show button to register a channel */
-params.showRegisterChannelButton    = true;
-
-/* Opens new queries in background when set to true */
-params.showNewQueriesInBackground   = false;
-
-/* Position of the navigation container (where channel and query buttons appear). Valid values: left, right, top, bottom */
-params.navigationPosition           = "top";
-
-params.registerChannelCommand = "/msg ChanServ register %channel%";
-
-/* See more parameters at http://redmine.lightirc.com/projects/lightirc/wiki/Customization_parameters */
-
-params.emoticonPath = "ponyemotes/";
-params.emoticonList = ":)->twilightsmile.gif,;)->raritywink.gif,:D->rainbowlaugh.gif,:P->derpytongue2.gif,:(->fluttershysad.gif,:$->twilightblush.gif,:O->pinkiegasp.gif,:|->trixieshiftleft.gif,:'(->fluttercry.gif,:S->unsuresweetie.gif,:[->flutterrage.gif,<3->heart.gif,6_9->derpyderp1.gif,>_>->aj-lie-1.gif,<_<->aj-lie-2.gif";
-
-params.userListCustomFormatting = "mode=o:userListOperator,mode=v:userListVoice,mode=y:userListOwner,mode=a:userListAdmin,mode=h:userListHalfop";
-
-/* Use this method to send a command to lightIRC with JavaScript */
-function sendCommand(command) {
-  swfobject.getObjectById('lightIRC').sendCommand(command);
-}
-
-/* Use this method to send a message to the active chatwindow */
-function sendMessageToActiveWindow(message) {
-  swfobject.getObjectById('lightIRC').sendMessageToActiveWindow(message);
-}
-
-/* Use this method to set a random text input content in the active window */
-function setTextInputContent(content) {
-  swfobject.getObjectById('lightIRC').setTextInputContent(content);
-}
-
-/* This method gets called if you click on a nick in the chat area */
-function onChatAreaClick(nick, ident, realname, channel, host) {
-  //alert("onChatAreaClick: "+nick);
-}
-
-/* This method gets called if you use the parameter contextMenuExternalEvent */
-function onContextMenuSelect(type, nick, ident, realname, channel, host) {
-  alert("onContextMenuSelect: "+nick+" for type "+type);
-}
-
-/* This method gets called if you use the parameter loopServerCommands */
-function onServerCommand(command) {
-  return command;
-}
-
-/* This method gets called if you use the parameter loopClientCommands */
-function onClientCommand(command) {
-  return command;
-}
-
-/* This event ensures that lightIRC sends the default quit message when the user closes the browser window */
-window.onbeforeunload = function() {
-  swfobject.getObjectById('lightIRC').sendQuit();
-}
-
-/* This loop escapes % signs in parameters. You should not change it */
-for(var key in params) {
-  params[key] = params[key].toString().replace(/%/g, "%25");
-}
