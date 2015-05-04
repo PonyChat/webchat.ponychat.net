@@ -1,0 +1,26 @@
+TextArea {
+	fontSize: 36px;
+}
+
+.userListOperator {
+	color:#0000FF;
+	fontWeight:bold;
+}
+
+.userListVoice {
+	color:#00FF00;
+}
+
+.userListOwner {
+	color:red;
+	fontWeight:bold;
+}
+
+.userListAdmin {
+	color:#00FFF0;
+	fontWeight:bold;
+}
+
+.userListHalfop {
+	color:orange;
+}
