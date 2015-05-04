@@ -1,19 +1,19 @@
 conf = qwebirc.config.load({
     "ui": {
-        "fg_color": "000000",
-        "fg_sec_color": "333333",
+        "fg_color": "DDDDDD",
+        "fg_sec_color": "999999",
         "privacy": false,
         "nick_status": true,
         "flash_on_mention": false,
         "dedicated_msg_window": false,
-        "bg_color": "ffffff",
+        "bg_color": "000000",
         "dedicated_notice_window": false,
         "lastpos_line": true,
         "hide_joinparts": true,
         "simple_color": false,
-        "beep_on_mention": true,
+        "beep_on_mention": false,
         "nick_click_query": false,
-        "nick_colors": false
+        "nick_colors": true
     },
     "atheme": {
         "sasl_type": "PLAIN",
